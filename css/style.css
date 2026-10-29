@@ -1,5 +1,4 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&family=Nunito+Sans:wght@400;600;700&display=swap');
+/* Fonts are loaded via <link> tags in each HTML <head> (Inter, display=swap) */
 
 * {
     margin: 0;
@@ -8,27 +7,40 @@
 }
 
 :root {
-    --primary-color: #1e1b4b;  /* Forest Green */
-    --secondary-color: #4338ca;  /* Emerald */
-    --accent-color: #818cf8;  /* Light Emerald */
-    --text-dark: #1e1b4b;  /* Dark Green for excellent readability */
-    --text-light: #1e1b4b;  /* Forest Green for secondary text */
-    --bg-light: #eef2ff;  /* Light Green Tint */
-    --bg-white: #FFFFFF;
-    --border-light: #c7d2fe;  /* Emerald borders/highlights */
-    --shadow-light: 0 4px 6px rgba(67, 56, 202, 0.1);
-    --shadow-medium: 0 10px 25px rgba(67, 56, 202, 0.15);
-    --shadow-large: 0 20px 40px rgba(67, 56, 202, 0.1);
-    
-    /* Font Variables */
-    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-body: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-accent: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Brand: green scale anchored on #065f46 */
+    --primary-color: #065f46;    /* Emerald 800 - brand primary */
+    --primary-dark: #064e3b;     /* Emerald 900 - page background */
+    --secondary-color: #047857;  /* Emerald 700 - lighter green, AA with white text */
+    --accent-color: #10b981;     /* Emerald 500 - decorative accents and borders only */
+    --primary-rgb: 6, 95, 70;
+    --secondary-rgb: 4, 120, 87;
+
+    /* Text (AA on white) */
+    --text-dark: #111827;   /* Near-black for headings and body copy */
+    --text-light: #4b5563;  /* Mid-gray for secondary text (7.5:1 on white) */
+
+    /* Surfaces */
+    --bg-light: #ecfdf5;    /* Light green tint */
+    --bg-white: #ffffff;
+    --border-light: #d1fae5;
+
+    --shadow-light: 0 4px 6px rgba(var(--primary-rgb), 0.1);
+    --shadow-medium: 0 10px 25px rgba(var(--primary-rgb), 0.15);
+    --shadow-large: 0 20px 40px rgba(var(--primary-rgb), 0.1);
+
+    /* Reserved for the hero and primary buttons only */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+
+    /* Font Variables - single family */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: var(--font-sans);
+    --font-body: var(--font-sans);
+    --font-accent: var(--font-sans);
 }
 
 body {
     font-family: var(--font-body);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: var(--primary-dark);
     min-height: 100vh;
     color: var(--text-dark);
     line-height: 1.6;
@@ -36,11 +48,12 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    background: linear-gradient(90deg, var(--bg-light) 0%, rgba(238, 242, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
+    background: var(--bg-white);
     border-bottom: 1px solid var(--border-light);
-    padding: 1rem 2rem;
+    padding: 1rem;
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow-light);
@@ -68,7 +81,7 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
 }
 
@@ -84,7 +97,7 @@ body {
 }
 
 .nav-links a:hover {
-    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    background: var(--secondary-color);
     color: white;
     transform: translateY(-2px);
 }
@@ -94,7 +107,7 @@ body {
     font-weight: 600;
     color: var(--text-dark);
     padding: 0.5rem 1rem;
-    background: linear-gradient(90deg, var(--bg-white) 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
     border-radius: 20px;
     border: 1px solid var(--border-light);
 }
@@ -103,42 +116,43 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 /* Hero Section */
 .hero {
     text-align: center;
     margin-bottom: 3rem;
-    padding: 2rem 0;
+    padding: 2rem 1.25rem;
+    background: var(--gradient-primary);
+    border-radius: 20px;
 }
 
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: white;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
     font-family: var(--font-body);
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Search Container */
 .search-container {
-    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(255, 255, 255, 0.97) 100%);
+    background: var(--bg-white);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: var(--shadow-large);
     margin-bottom: 2rem;
     border: 1px solid var(--border-light);
-    backdrop-filter: blur(10px);
 }
 
 .search-box {
@@ -150,31 +164,29 @@ body {
 .search-input {
     font-family: var(--font-body);
     width: 100%;
-    padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    padding: 0.875rem 0.875rem 0.875rem 2.5rem;
     border: 2px solid var(--border-light);
     border-radius: 50px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
-    background: linear-gradient(90deg, white 0%, var(--bg-light) 100%);
+    background: var(--bg-white);
     color: var(--text-dark);
 }
 
 .search-input:focus {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.1);
-    background: white;
+    box-shadow: 0 0 0 3px rgba(var(--secondary-rgb), 0.15);
 }
 
 .search-input::placeholder {
     font-family: var(--font-body);
     color: var(--text-light);
-    opacity: 0.7;
 }
 
 .search-icon {
     position: absolute;
-    left: 1.25rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2rem;
@@ -184,16 +196,13 @@ body {
 
 /* Search Results */
 .search-results {
-    background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+    background: var(--bg-white);
     border-radius: 15px;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 0 0 2rem;
     box-shadow: var(--shadow-medium);
     display: none;
     border: 1px solid var(--border-light);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .search-results.show {
@@ -211,22 +220,22 @@ body {
 
 .search-result-item {
     font-family: var(--font-body);
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 0.8rem;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(90deg, white 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
     margin-bottom: 0.5rem;
     border: 1px solid transparent;
     font-weight: 500;
     color: var(--text-dark);
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .search-result-item:hover {
-    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    background: var(--secondary-color);
     color: white;
-    transform: translateX(8px);
+    transform: translateX(4px);
     box-shadow: var(--shadow-medium);
     border-color: var(--secondary-color);
 }
@@ -239,7 +248,7 @@ body {
     text-align: center;
     padding: 2rem;
     color: var(--text-light);
-    background: linear-gradient(135deg, white 0%, var(--bg-light) 100%);
+    background: var(--bg-white);
     border-radius: 10px;
     border: 1px solid var(--border-light);
 }
@@ -268,20 +277,19 @@ body {
     color: white;
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .subjects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
 /* Subject Card Styles */
 .subject-card {
-    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(255, 255, 255, 0.97) 100%);
+    background: var(--bg-white);
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
@@ -294,7 +302,6 @@ body {
 .subject-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-medium);
-    background: linear-gradient(135deg, white 0%, var(--bg-light) 100%);
     border-color: var(--accent-color);
 }
 
@@ -315,7 +322,7 @@ body {
 .subject-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -383,24 +390,24 @@ body {
 
 /* Engagement Footer */
 .engagement-footer {
-    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(255, 255, 255, 0.97) 100%);
+    background: var(--bg-white);
     border-radius: 20px;
-    padding: 2.5rem 2rem;
-    margin-top: 4rem;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
     box-shadow: var(--shadow-large);
     border: 1px solid var(--border-light);
 }
 
 .engagement-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
 .engagement-item {
     text-align: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, white 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
     border-radius: 15px;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -416,7 +423,7 @@ body {
 .engagement-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -426,11 +433,11 @@ body {
     font-size: 1.2rem;
 }
 
-/* Animations */
+/* Animations (single source for fadeInUp / fadeIn / spin) */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -459,7 +466,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(67, 56, 202, 0.95) 0%, rgba(67, 56, 202, 0.9) 100%);
+    background: rgba(var(--primary-rgb), 0.95);
     display: none;
     justify-content: center;
     align-items: center;
@@ -508,6 +515,7 @@ body {
     position: relative;
 }
 
+/* Centered with negative margins so the shared spin keyframes don't override a translate */
 .subject-card.loading::after {
     content: '';
     position: absolute;
@@ -515,122 +523,20 @@ body {
     left: 50%;
     width: 30px;
     height: 30px;
-    border: 3px solid rgba(67, 56, 202, 0.3);
+    margin: -15px 0 0 -15px;
+    border: 3px solid rgba(var(--secondary-rgb), 0.3);
     border-top: 3px solid var(--secondary-color);
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    transform: translate(-50%, -50%);
 }
 
-/* Mobile Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-    
-    .navbar {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .nav-links {
-        gap: 1rem;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .search-container {
-        padding: 1.5rem;
-        margin: 0 0 2rem 0;
-    }
-    
-    .search-input {
-        font-size: 1rem;
-        padding: 1rem 1rem 1rem 3rem;
-    }
-    
-    .search-results {
-        margin: 0 0 2rem 0;
-        max-width: none;
-    }
-    
-    .search-result-item {
-        font-size: 0.95rem;
-        padding: 0.7rem 0.8rem;
-    }
-    
-    .search-result-item:hover {
-        transform: translateX(4px);
-    }
-    
-    .subjects-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .subject-card {
-        padding: 1.5rem;
-    }
-    
-    .engagement-footer {
-        padding: 2rem 1rem;
-        margin-top: 3rem;
-    }
-    
-    .engagement-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .engagement-item {
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.75rem;
-    }
-    
-    .subjects-section h2 {
-        font-size: 1.5rem;
-    }
-    
-    .search-input {
-        padding: 0.875rem 0.875rem 0.875rem 2.5rem;
-    }
-    
-    .search-icon {
-        left: 1rem;
-    }
-    
-    .subject-card h3 {
-        font-size: 1.25rem;
-    }
-    
-    .subject-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.25rem;
-    }
-
-}
-
-/* Update Notification Styles - Add this to your style.css */
+/* Update Notification Styles */
 .update-notification {
     position: fixed;
     bottom: -300px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+    background: var(--primary-color);
     color: white;
     padding: 1.5rem 2rem;
     border-radius: 16px;
@@ -692,7 +598,7 @@ body {
 
 .update-btn {
     background: white;
-    color: #1e1b4b;
+    color: var(--primary-color);
 }
 
 .update-btn:hover {
